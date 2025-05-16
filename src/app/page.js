@@ -11,13 +11,13 @@ export default function Home() {
           <fieldset>
             <legend>Lägg till en film</legend>
             <div className="form-group">
-              <label for="title">Titel:</label>
-              <input type="text" class="form-control" id="title" placeholder="Titel här..." />
+              <label htmlFor="title">Titel:</label>
+              <input type="text" className="form-control" id="title" placeholder="Titel här..." />
             </div>
 
             <div className="form-group">
-              <label for="grade">Betyg:</label>
-              <select id="grade" class="form-control">
+              <label htmlFor="grade">Betyg:</label>
+              <select id="grade" className="form-control">
                 <option value="" selected>Välj betyg här...</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -27,8 +27,8 @@ export default function Home() {
               </select>
             </div>
 
-            <div class="form-group mt-2">
-                        <button id="save-movie" class="btn btn-success">
+            <div className="form-group mt-2">
+                        <button id="save-movie" className="btn btn-success">
                             Spara film
                         </button>
                     </div>
