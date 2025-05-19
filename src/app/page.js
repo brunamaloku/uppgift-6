@@ -1,8 +1,5 @@
 'use client';
-import Image from "next/image";
-import styles from "./page.module.css";
 import { useState } from 'react';
-
 
 export default function Home() {
 
@@ -12,6 +9,7 @@ export default function Home() {
 
     const [title, setTitle] = useState('');
     const [rating, setRating] = useState('');
+
     function SubmitForm(e) {
       e.preventDefault();
 
@@ -21,14 +19,10 @@ export default function Home() {
         return false;
       }
 
-      const movie = { title: title, grade: rating };
-
-      let localMovieList = movieList;
-      localMovieList.push(movie);
-      setMovieList(localMovieList);
-
-      console.log(movieList);
-
+      setMovieList([
+        ...movieList,
+        { title: title, grade: rating }
+      ]);
       e.target.reset();
     }
 
@@ -62,31 +56,56 @@ export default function Home() {
           </fieldset>
         </form>
       </>
-    );
+    )
+
   }
 
-  function GetStars() {
-    let stars = ""
-    for (let i = 0; i < rating; i++) {
-        stars += '<img src="images/star.png" alt="Star">';
+  function GetStars(rating) {
+    let stars = [];
+    for (let i = 0; i < rating.rating; i++) {
+      stars.push(<img src={"images/star.png"} alt="Star" key={i}></img>);
     }
-    return stars;
-
+    return(stars)
   }
 
   function ListMovies() {
     const listItems = movieList.map(movie =>
 
-
-      <li data-grade={movie.grade} data-title={movie.title}>
+      <li data-grade={movie.grade} data-title={movie.title}  key={movie.title}>
         {movie.title}
-        <img src="images/delete.png" alt="Delete movie" class="delete-movie" />
-        <GetStars />
+        <img src={'images/delete.png'} alt="Delete movie" className="delete-movie" />
+        {/* <GetStars rating={movie.grade} /> */}
+        <GetStars rating={movie.grade} />
       </li>
     );
     return (
       <ul id="movie-list">{listItems}</ul>
     )
+  }
+
+  function SortAlphabetically() {
+
+    const sortedList = [...movieList];
+    sortedList.sort(function(a, b) {
+        var x = a.title;
+        var y = b.title;
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      }
+    );
+    setMovieList(sortedList);
+  }
+
+  function SortByRating() {
+
+    const sortedList = [...movieList];
+    sortedList.sort(function(a, b) {
+        var x = b.grade;
+        var y = a.grade;
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      }
+    );
+    console.log(sortedList);
+    setMovieList(sortedList);
   }
 
   return (
@@ -103,10 +122,10 @@ export default function Home() {
         <ListMovies />
 
 
-        <button id="order-alphabetic" className="btn btn-primary">
+        <button id="order-alphabetic" className="btn btn-primary" onClick={SortAlphabetically}>
           Alfabetisk ordning
         </button>
-        <button id="order-grade" className="btn btn-primary">
+        <button id="order-grade" className="btn btn-primary" onClick={SortByRating}>
           Betygsordning
         </button>
       </div>
