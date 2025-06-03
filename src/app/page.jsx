@@ -15,14 +15,14 @@ export default function Home() {
 
         <MovieForm setMovieList={setMovieList} />
 
-        <hr />
-
         <h2>Mina filmer</h2>
 
         <MovieList movieList={movieList} setMovieList={setMovieList} />
 
-        <AlphabetButton movieList={movieList} setMovieList={setMovieList} />
-        <RatingButton movieList={movieList} setMovieList={setMovieList} />
+        <div id="buttons">
+          <AlphabetButton movieList={movieList} setMovieList={setMovieList} />
+          <RatingButton movieList={movieList} setMovieList={setMovieList} />
+        </div>
     </div>
   );
 }

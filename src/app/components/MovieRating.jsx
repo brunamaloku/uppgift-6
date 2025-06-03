@@ -1,5 +1,5 @@
 export default function MovieRating({ setRating }) {
-    return (<div>
+    return (<div id="grade-form">
         <label htmlFor="grade">Betyg:</label>
         <select id="grade" defaultValue="" onChange={e => setRating(e.target.value)}>
             <option value="">Välj betyg här...</option>
