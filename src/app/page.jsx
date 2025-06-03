@@ -38,13 +38,13 @@ export default function Home() {
       <>
         <form action="#" id="new-movie-form" onSubmit={SubmitForm}>
           <fieldset>
-            <legend>Lägg till en film</legend>
-            <div className="form-group">
+            <legend>Lägg till en film:</legend>
+            <div className="title-form">
               <label htmlFor="title">Titel:</label>
               <input type="text" className="form-control" id="title" placeholder="Titel här..." onChange={e => setTitle(e.target.value)} />
             </div>
 
-            <div className="form-group">
+            <div className="grade-form">
               <label htmlFor="grade">Betyg:</label>
               <select id="grade" className="form-control" defaultValue="" onChange={e => setRating(e.target.value)}>
                 <option value="">Välj betyg här...</option>
@@ -127,22 +127,18 @@ export default function Home() {
   }
 
   return (
-    <div className="row container-fluid">
-      <div className="xs-col-12">
-        <h1>Min filmlista</h1>
+      <div className="container">
+          <h1>Min filmlista</h1>
 
-        <MovieForm />
+          <MovieForm />
 
-        <hr />
+          <h2>Mina filmer</h2>
 
-        <h2>Mina filmer</h2>
+          <ListMovies />
 
-        <ListMovies />
-
-        <AlphabetButton />
-        <RatingButton />
+          <AlphabetButton />
+          <RatingButton />
       </div>
-    </div>
   );
 }
 
