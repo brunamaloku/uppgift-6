@@ -57,13 +57,13 @@ fieldset {
   padding: 5px;
 }
 
-#save-movie:hover {
+#save-movie:hover, #order-alphabetic:hover, #order-grade:hover {
   border: #000 1px solid;
   color: #000;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.title-form {
+#title-form {
   margin-bottom: 0.5rem;
 }
 
@@ -71,7 +71,53 @@ label {
   margin-right: 0.25rem;
 }
 
-#order-alphabetic, #order-grade {
+#buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 20%;
+}
 
-  
+img {
+  width: 2.5rem;
+  height: auto;
+  margin: 0 0.4rem 0 0.4rem;
+}
+
+.delete-movie {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.delete-movie:hover {
+  color: #ff0000;
+  transition: color 0.3s ease;
+}
+
+li::marker {
+  content: '';
+}
+
+li {
+  display: flex;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  width: 30%;
+}
+
+#home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
